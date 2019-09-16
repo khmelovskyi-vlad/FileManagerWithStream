@@ -14,7 +14,6 @@ namespace FileManagerWithStream
             this.AdressName = adressName;
         }
         public string AdressName { get; set; }
-        Manager manager = new Manager();
         StringBuilder textBuilderEnd;
         StringBuilder allTextBuilder;
         StringBuilder textBuilderFirst = new StringBuilder();
@@ -115,7 +114,6 @@ namespace FileManagerWithStream
                 }
                 SavingFile();
             }
-            manager.BackFolder();
         }
         private bool LeftOrTopPositionIsOrNotTooBig()
         {
@@ -127,7 +125,6 @@ namespace FileManagerWithStream
             catch (ArgumentOutOfRangeException)
             {
                 Console.WriteLine("This text is too big, can`t redact it");
-                manager.BackFolder();
                 return true;
             }
         }
@@ -293,7 +290,7 @@ namespace FileManagerWithStream
             }
             else
             {
-                if (topPosition >= 0)
+                if (topPosition > 0)
                 {
                     topPosition--;
                     textBuilderFirst = new StringBuilder(fileLines[topPosition]);

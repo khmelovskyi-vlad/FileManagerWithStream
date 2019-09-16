@@ -42,7 +42,8 @@ namespace FileManagerWithStream
         {
             try
             {
-                adressName = $"{Path.GetDirectoryName(adressName)}\\";
+                adressName = adressName.Remove(adressName.Length - 1);
+                adressName = Path.GetDirectoryName(adressName);
                 OutPutFoldersAndFiles();
             }
             catch (ArgumentNullException)
@@ -74,6 +75,7 @@ namespace FileManagerWithStream
                     adressName = adressName.Substring(0, adressName.Length - 1);
                     FileStreamClass fileStreamClass = new FileStreamClass(adressName);
                     fileStreamClass.RedactFile();
+                    BackFolder();
                     break;
                 }
             }
